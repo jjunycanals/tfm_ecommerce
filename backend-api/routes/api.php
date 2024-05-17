@@ -10,12 +10,11 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 
 Route::get('/orders', [OrderController::class, 'index']);
+Route::get('/orders/{id}', [OrderController::class, 'show']);
 
 Route::post('/orders', [OrderController::class, 'store']);
 
-Route::put('/orders/{id}', function ($id) {
-    return 'Order Update $id';
-});
-Route::delete('users/{id}', function ($id) {
-    return ("Delete Order " + $id);
-});
+Route::put('/orders/{id}', [OrderController::class, 'update']);
+Route::patch('/orders/{id}', [OrderController::class, 'updatePatch']);
+
+Route::delete('/orders/{id}', [OrderController::class, 'destroy']);
