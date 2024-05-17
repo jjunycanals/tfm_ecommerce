@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Orders extends Model
 {
     use HasFactory;
+
+    protected $table = 'orders';
     protected $fillable = [
         'order_number',
         'name',
@@ -25,6 +27,18 @@ class Orders extends Model
         'delivery_date'
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($order) {
+            // Obtenim l'últim nombre de comanda
+            $lastOrder = Orders::orderBy('order_number', 'desc')->first();
+
+            // Incrementem +1 al nombre order_number
+            $order->order_number = $lastOrder ? $lastOrder->order_number + 1 : 1;
+        });
+    }
 
 
 }
