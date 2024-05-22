@@ -28,17 +28,21 @@ import { RegisterComponent } from '../register/register.component';
   styleUrl: './products.component.scss'
 })
 export class ProductsComponent {
-  products: any[] = [];
+  products: any;
 
   constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
-    this.apiService.getProducts().subscribe((data: any[]) => {
+    this.apiService.getProducts().subscribe((data) => {
       this.products = data;
     });
   }
 
   viewProductDetail(productId: number): void {
     this.router.navigate(['/products', productId]);
+  }
+
+  editProduct(productId: number): void {
+    this.router.navigate(['/create-product', productId]);
   }
 }

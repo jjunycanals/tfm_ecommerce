@@ -6,6 +6,7 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { NavComponent } from './components/nav/nav.component';
 import { ProductsComponent } from './components/products/products.component';
 import { DetailproductsComponent } from './components/detailproducts/detailproducts.component';
+import { CreateProductComponent } from './components/create-product/create-product.component';
 
 export const routes: Routes = [
   {
@@ -31,6 +32,10 @@ export const routes: Routes = [
   {
     path: 'products/:id',
     component: DetailproductsComponent
+  },
+  {
+    path: 'create-product/:id',
+    component: CreateProductComponent
   }
 ];
 @NgModule({

@@ -1,0 +1,117 @@
+.product-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  padding: 30px 15px;
+}
+
+.card{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.card {
+  border-radius: 20px;
+  box-shadow: 0 1px 6px 1px rgba(0,0,0,0.1);
+  transition: .2s;
+}
+
+.card-img {
+  width: 100%;
+  height: 200px;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: .2s;
+}
+
+/* Desplaçar superiorment el content de cada product quan es passa per sobre */
+.card:hover{
+  box-shadow: 0 1px 14px 2px rgba(0,0,0,0.15);
+  transform: translateY(-4px);
+}
+
+/* Donar estils a la imatge de cada Category */
+.sites-header {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  cursor: pointer;
+}
+/* Per fer zoom a la imatge */
+.sites:hover .sites-img {
+  transform: scale(1.1);
+}
+/* Donem cos al body de cada category */
+.sites-body{
+  padding: 4%;
+  text-align: center;
+}
+.sites-body span {
+  display: inline-block;
+  margin-bottom: 2%;
+  color: gray;
+}
+.sites-body h2 {
+  margin-bottom: 10%;
+  line-height: 1.5;
+}
+/* Donem estils als links */
+.sites-link {
+  display: block;
+  width: 50%;
+  padding: 5%;
+  margin: auto;
+  color: white;
+  text-decoration: none;
+  background: var(--secondary-color);
+  border-radius: 20px;
+  box-shadow: 1px 2px 6px 1px rgba(0,0,0,0.1);
+}
+/* Afegim animació al link */
+.sites-body .sites-link:hover {
+  background: $uoc-masterbrand;
+  box-shadow: 1px 2px 6px 1px rgba(0,0,0,0.2);
+  transform: translateY(-2px);
+}
+.but{
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 2% 6%;
+  margin: 2%;
+  overflow: hidden;
+  font-family: inherit;
+  font-size: 14px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  appearance: none;
+  user-select: none;
+  background-color: var(--analogue-color-2);
+  border: 1px solid transparent;
+  border-radius: 25px;
+  transition: all 0.1s ease-in-out 0s;
+
+}
+.sit{
+  text-align: right;
+}
+/* Fem alguns elements responsius després de crear el grid */
+@media (max-width: 840px) {
+  .content {
+    grid-template-columns: repeat(2, 1fr)
+  }
+}
+/* En pantalles petites de movil fer 1 sola columna */
+@media (max-width: 600px) {
+  .content {
+    grid-template-columns: repeat(1, 1fr)
+  }
+}

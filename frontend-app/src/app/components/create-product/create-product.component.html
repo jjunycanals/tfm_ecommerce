@@ -1,0 +1,44 @@
+<h1>Crea un nou producte</h1>
+<form (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Nom:</label>
+    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="product.name" required>
+  </div>
+  <div class="form-group">
+    <label for="description">Descripció:</label>
+    <textarea class="form-control" id="description" name="description" [(ngModel)]="product.description" required></textarea>
+  </div>
+  <div class="form-group">
+    <label for="features">Característiques:</label>
+    <textarea class="form-control" id="features" name="features" [(ngModel)]="product.features" required></textarea>
+  </div>
+  <div class="form-group">
+    <label for="size">Mida:</label>
+    <select class="form-control" id="size" name="size" [(ngModel)]="product.size" required>
+      <option value="XL">XL</option>
+      <option value="L">L</option>
+      <option value="M">M</option>
+      <option value="S">S</option>
+      <option value="XS">XS</option>
+      <option value="U">U</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="price">Preu:</label>
+    <input type="number" class="form-control" id="price" name="price" [(ngModel)]="product.price" required>
+  </div>
+  <div class="form-group">
+    <label for="images">Imatges:</label>
+    <input type="text" class="form-control" id="images" name="images" [(ngModel)]="product.images" required>
+  </div>
+  <div class="form-group">
+    <label for="product_size">Mida del producte:</label>
+    <input type="text" class="form-control" id="product_size" name="product_size" [(ngModel)]="product.product_size" required>
+  </div>
+  <div class="form-group">
+    <label for="short_message">Missatge curt:</label>
+    <input type="text" class="form-control" id="short_message" name="short_message" [(ngModel)]="product.short_message" required>
+  </div>
+  <button type="submit" class="btn btn-primary" id="guardarproducte">Guardar</button>
+</form>
+

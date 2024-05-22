@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavComponent } from './components/nav/nav.component';
 import { ProductsComponent } from './components/products/products.component';
 import { DetailproductsComponent } from './components/detailproducts/detailproducts.component';
+import { CreateProductComponent } from './components/create-product/create-product.component';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +26,8 @@ import { DetailproductsComponent } from './components/detailproducts/detailprodu
     OrdersComponent,
     HttpClientModule,
     ProductsComponent,
-    DetailproductsComponent
+    DetailproductsComponent,
+    CreateProductComponent
   ],
   providers: [ApiService],
   templateUrl: './app.component.html',
