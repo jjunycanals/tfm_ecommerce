@@ -1,0 +1,45 @@
+<p>orders works!</p>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Número de Orden</th>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Dirección</th>
+      <th>Cantidad de Productos</th>
+      <th>Estado</th>
+      <th>Método de Pago</th>
+      <th>IBAN</th>
+      <th>Precio</th>
+      <th>Precio Total</th>
+      <th>Costo de Envío</th>
+      <th>Subtotal</th>
+      <th>Impuesto</th>
+      <th>Fecha de Entrega</th>
+      <th>Fecha de Creación</th>
+      <th>Fecha de Actualización</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of datos.message">
+      <td>{{ order.id }}</td>
+      <td>{{ order.order_number }}</td>
+      <td>{{ order.name }}</td>
+      <td>{{ order.email }}</td>
+      <td>{{ order.address }}</td>
+      <td>{{ order.product_quantity }}</td>
+      <td>{{ order.status }}</td>
+      <td>{{ order.payment_method }}</td>
+      <td>{{ order.iban }}</td>
+      <td>{{ order.price }}</td>
+      <td>{{ order.total_price }}</td>
+      <td>{{ order.shipping_cost }}</td>
+      <td>{{ order.subtotal }}</td>
+      <td>{{ order.tax }}</td>
+      <td>{{ order.delivery_date }}</td>
+      <td>{{ order.created_at }}</td>
+      <td>{{ order.updated_at }}</td>
+    </tr>
+  </tbody>
+</table>

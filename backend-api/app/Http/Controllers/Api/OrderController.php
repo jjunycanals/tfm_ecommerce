@@ -9,10 +9,8 @@ use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
 {
-    public function index()
-    {
+    public function index()  {
         $orders = Orders::all();
-
         if ($orders->isEmpty()) {
             $data = [
                 'message' => 'No es troben orders',
@@ -26,14 +24,12 @@ class OrderController extends Controller
             ];
             return response() -> json($data, 200);
         }
-
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
-    {
+    public function create(Request $request) {
         return view('orders.create');
     }
 
@@ -93,9 +89,9 @@ class OrderController extends Controller
         } else {
             $data = [
                 'message' => $order,
-                'status' => 200
+                'status' => 203
             ];
-            return response()->json($data, 200);
+            return response()->json($data, 203);
         }
     }
 
@@ -117,9 +113,9 @@ class OrderController extends Controller
         $data = [
             'message' => 'Order details editades amb èxit',
             'order' => $order,
-            'status' => 200
+            'status' => 204
         ];
-        return response()->json($data, 200);
+        return response()->json($data, 204);
     }
 
     /**
@@ -172,9 +168,9 @@ class OrderController extends Controller
         $data = [
             'message' => 'Update fet amb Update Order',
             'order' => $Or,
-            'status' => '200'
+            'status' => '204'
         ];
-        return response()->json($data, 200);
+        return response()->json($data, 204);
 
     }
 
@@ -243,9 +239,9 @@ class OrderController extends Controller
         $data = [
             'message' => 'Update field fet amb UpdatePatch Order',
             'order' => $Or,
-            'status' => '200'
+            'status' => '205'
         ];
-        return response()->json($data, 200);
+        return response()->json($data, 205);
 
     }
 
