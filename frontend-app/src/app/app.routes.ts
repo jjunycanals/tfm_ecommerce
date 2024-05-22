@@ -10,6 +10,10 @@ import { CreateProductComponent } from './components/create-product/create-produ
 
 export const routes: Routes = [
   {
+    path: '',
+    component: ProductsComponent
+  },
+  {
     path: 'nav',
     component: NavComponent,
   },
@@ -35,6 +39,10 @@ export const routes: Routes = [
   },
   {
     path: 'create-product/:id',
+    component: CreateProductComponent
+  },
+  {
+    path: 'create-product',
     component: CreateProductComponent
   }
 ];

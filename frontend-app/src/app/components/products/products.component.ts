@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { LoginComponent } from '../login/login.component';
 import { NavComponent } from '../nav/nav.component';
@@ -21,7 +21,8 @@ import { RegisterComponent } from '../register/register.component';
     LoginComponent,
     RegisterComponent,
     OrdersComponent,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   providers: [ApiService],
   templateUrl: './products.component.html',
