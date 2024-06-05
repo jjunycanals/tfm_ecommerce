@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://testtfm.netlify.app'
+  apiUrl: 'https://immandco.netlify.app'
 };
