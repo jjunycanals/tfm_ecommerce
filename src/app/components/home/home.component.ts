@@ -30,7 +30,7 @@ import { Product } from '../../model/product.dto';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
-  featuredProducts: Product[]=[];
+  featuredProducts: Product[] = [];
 
   constructor(private apiService: ApiService, private router: Router) { }
 
