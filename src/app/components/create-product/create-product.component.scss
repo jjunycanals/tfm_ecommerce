@@ -1,0 +1,43 @@
+.custom-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+  min-height: 80vh;
+}
+
+.card {
+  width: 50%;
+  height: auto;
+  align-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  background-color: var(--background-2);
+}
+
+.form-group{
+  margin: 2% 5%;
+}
+
+.accions {
+  text-align: end;
+  margin: 5%;
+  padding: 1%;
+}
+
+.accions button {
+  padding: 2% 5%;
+  color: var(--font-color);
+  border-color: 1px solid var(--active-color);
+  background-color: var(--active-color);
+}
+
+.accions:hover {
+  transform: translateX(3px);
+  transform: translateY(3px);
+}
+
+#guardarproducte {
+  align-content: right;
+  text-align: right;
+}

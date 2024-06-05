@@ -1,0 +1,40 @@
+.navbar {
+  background-color: var(--background);
+  padding: 1% 5%;
+  margin-bottom: 2%;
+}
+
+.navbar-brand{
+  color: var(--font-color);
+}
+
+.navbar .nav-link {
+  color: var(--font-color);
+}
+
+.navbar .nav-link:hover {
+  color: var(--active-color);
+}
+
+.carret {
+  background-color: var(--active-color);
+}
+
+.carret:hover {
+  transform: translate(4px, -4px);
+}
+
+.btn.carret{
+  margin-left: 20%;
+  width: 100%;
+  height: auto;
+  min-width: 100px;
+}
+
+/* Per saber on som de la pagina i quedi en el nav reflexat */
+.navbar .nav-link.active {
+  // background-color: var(--active-color);
+  border-bottom: solid var(--active-color);
+  // border-radius: 10%;
+}
+

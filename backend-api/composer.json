@@ -14,8 +14,7 @@
         "nikic/php-parser": "^5.0",
         "psy/psysh": "^0.12.3",
         "symfony/var-dumper": "^7.0",
-        "symfony/yaml": "^7.0",
-        "fruitcake/laravel-cors": "^3.0"
+        "symfony/yaml": "^7.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

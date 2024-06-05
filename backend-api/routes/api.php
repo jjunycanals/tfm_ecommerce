@@ -1,14 +1,16 @@
 <?php
 
+use App\Http\Controllers\Auth\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
-Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::middleware(['cors'])->group(function () {
     Route::get('/orders', [OrderController::class, 'index']);
@@ -28,4 +30,9 @@ Route::middleware(['cors'])->group(function () {
     Route::put('/products/{id}', [ProductController::class, 'update']);
     Route::patch('/products/{id}', [ProductController::class, 'updatePatch']);
     Route::delete('/products/{id}', [ProductController::class, 'destroy']);
+
+    // USER
+    Route::get('/user', [UserController::class, 'index']);
+    Route::get('users/{id}', [UserController::class, 'show']);
+    Route::post('/register', [RegisteredUserController::class, 'store']);
 });

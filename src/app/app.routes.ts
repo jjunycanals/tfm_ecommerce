@@ -7,11 +7,15 @@ import { NavComponent } from './components/nav/nav.component';
 import { ProductsComponent } from './components/products/products.component';
 import { DetailproductsComponent } from './components/detailproducts/detailproducts.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
-
+import { HomeComponent } from './components/home/home.component';
 export const routes: Routes = [
   {
     path: '',
-    component: ProductsComponent
+    component: HomeComponent,
+  },
+  {
+    path: 'index',
+    component: HomeComponent,
   },
   {
     path: 'nav',

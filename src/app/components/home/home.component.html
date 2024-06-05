@@ -1,0 +1,15 @@
+<div class="home-container">
+    <h1 class="title">Cosint i Creant <br> somnis a mida...</h1>
+    <button class="btn goproducts">
+        <i class="fa-solid fa-paper-plane"></i> Productes
+    </button>
+    
+    <div class="product-grid">
+      <div *ngFor="let product of featuredProducts" class="product-card">
+        <img [src]="product.images" alt="{{ product.name }}" class="product-image">
+        <h2 class="product-name">{{ product.name }}</h2>
+        <p class="product-price">{{ product.price | currency }}</p>
+        <button (click)="viewProductDetail(product.id)" class="btn btn-primary">Veure Detalls</button>
+      </div>
+    </div>
+</div>
