@@ -1,6 +1,69 @@
-<p>detailproducts works!</p>
-<div *ngIf="product">
-  <h1>{{ product.name }}</h1>
-  <p>{{ product.description }}</p>
-  <p>Price: {{ product.price }}</p>
+<div class="container mt-5 mb-5" *ngIf="product">
+  <div class="row d-flex justify-content-center">
+      <div class="col-md-10">
+          <div class="card">
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="images p-3">
+                          <div class="text-center p-4">
+                              <img id="main-image" src="../../../assets/img/{{ product.images }}" width="450" alt="{{ product.name }}" />
+                          </div>
+                          <div class="thumbnail text-center">
+                              <img onclick="change_image(this)" src="../../../assets/img/{{ product.images }}" width="70" alt="{{ product.name }}">
+                              <!-- per +imatges -->
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="product p-4">
+                          <div class="d-flex justify-content-between align-items-center">
+                              <div class="d-flex align-items-center">
+                                <a href="/products">
+                                  <i class="fa-solid fa-arrow-left-long"></i>
+                                  <span class="ml-1">Tornar</span>
+                                </a>
+                              </div>
+                              <i class="fa-solid fa-cart-shopping"></i>
+                          </div>
+                          <div class="mt-4 mb-3">
+                              <span class="text-uppercase text-muted brand">Orianz</span>
+                              <h5 class="text-uppercase">{{ product.name }}</h5>
+                              <div class="price d-flex flex-row align-items-center">
+                                  <span class="act-price">{{ product.price }} €</span>
+
+                              </div>
+                          </div>
+                          <p class="about">{{ product.description }}</p>
+                          <div class="sizes mt-5">
+                              <h6 class="text-uppercase">Size</h6>
+                              <label class="radio">
+                                  <input type="radio" name="size" value="S" checked>
+                                  <span>S</span>
+                              </label>
+                              <label class="radio">
+                                  <input type="radio" name="size" value="M">
+                                  <span>M</span>
+                              </label>
+                              <label class="radio">
+                                  <input type="radio" name="size" value="L">
+                                  <span>L</span>
+                              </label>
+                              <label class="radio">
+                                  <input type="radio" name="size" value="XL">
+                                  <span>XL</span>
+                              </label>
+                              <label class="radio">
+                                  <input type="radio" name="size" value="XXL">
+                                  <span>XXL</span>
+                              </label>
+                          </div>
+                          <div class="cart mt-4 align-items-center">
+                              <button class="btn btn-danger text-uppercase mr-2 px-4">Afegir <i class="fa-solid fa-arrow-right"></i></button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 </div>

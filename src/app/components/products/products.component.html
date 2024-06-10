@@ -2,8 +2,8 @@
   <h1>Product List</h1>
   <a routerLink="/create-product" class="btn btn-primary">Crear Producte</a>
   <div class="products-list">
-    <div class="content" *ngFor="let product of products.message">
-      <div class="prod">
+    <div class="content">
+      <article class="prod" *ngFor="let product of products.message">
         <div class="prod-header">
           <div class="prod-img">
             <img src="../../../assets/img/{{ product.images }}" alt="{{ product.name }}" title="{{ product.name }}">
@@ -12,12 +12,11 @@
         <div class="prod-body">
           <h5>{{ product.name }}</h5>
           <p>{{ product.description }}</p>
-          <p>{{ product.price }}</p>
+          <p class="preu">{{ product.price }} €</p>
           <a (click)="viewProductDetail(product.id)" class="btn btn-secondary accio2">Veure Detall</a>
           <a (click)="editProduct(product.id)" class="btn btn-primary accio">Editar</a>
         </div>
-      </div>
+      </article>
     </div>
   </div>
 </div>
-

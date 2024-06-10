@@ -30,7 +30,7 @@ import { Product } from '../../model/product.dto';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
-  featuredProducts: Product[] = [];
+  products: any = {};
 
   constructor(private apiService: ApiService, private router: Router) { }
 
@@ -38,9 +38,13 @@ export class HomeComponent implements OnInit {
     this.getFeaturedProducts();
   }
 
+  goProducts(): void {
+    this.router.navigate(['/products']);
+  }
+
   getFeaturedProducts(): void {
     this.apiService.getProducts().subscribe(products => {
-      this.featuredProducts = products;
+      this.products = products;
       // Filtra els productes destacats segons la teva lògica
       // this.featuredProducts = products.message.filter((product: Product) => product.isFeatured);
     });

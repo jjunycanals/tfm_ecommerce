@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { ApiService } from '../../services/api.service';
@@ -28,8 +28,8 @@ import { RegisterComponent } from '../register/register.component';
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
-export class ProductsComponent {
-  products: any;
+export class ProductsComponent implements OnInit{
+  products: any = {};
 
   constructor(private apiService: ApiService, private router: Router) {}
 
@@ -40,7 +40,7 @@ export class ProductsComponent {
   }
 
   viewProductDetail(productId: number): void {
-    this.router.navigate(['/products', productId]);
+    this.router.navigate([`/products`, productId]);
   }
 
   editProduct(productId: number): void {

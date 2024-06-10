@@ -16,12 +16,16 @@
   color: var(--active-color);
 }
 
+.nav-item {
+  margin: 0% 3%;
+}
+
 .carret {
   background-color: var(--active-color);
 }
 
 .carret:hover {
-  transform: translate(4px, -4px);
+  transform: scale(1.1);
 }
 
 .btn.carret{
@@ -33,8 +37,6 @@
 
 /* Per saber on som de la pagina i quedi en el nav reflexat */
 .navbar .nav-link.active {
-  // background-color: var(--active-color);
   border-bottom: solid var(--active-color);
-  // border-radius: 10%;
 }
 

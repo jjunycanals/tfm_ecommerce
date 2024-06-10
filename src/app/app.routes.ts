@@ -35,19 +35,19 @@ export const routes: Routes = [
   },
   {
     path: 'products',
-    component: ProductsComponent
+    component: ProductsComponent,
   },
   {
     path: 'products/:id',
-    component: DetailproductsComponent
+    component: DetailproductsComponent,
   },
   {
     path: 'create-product/:id',
-    component: CreateProductComponent
+    component: CreateProductComponent,
   },
   {
     path: 'create-product',
-    component: CreateProductComponent
+    component: CreateProductComponent,
   }
 ];
 @NgModule({
