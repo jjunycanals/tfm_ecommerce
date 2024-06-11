@@ -1,18 +1,23 @@
-<p>login works!</p>
-<div>
-  <h2>Login</h2>
-  <form (ngSubmit)="login()">
-    <div>
-      <label for="email">Email</label>
-      <input type="email" name="email" required />
-    </div>
-    <div>
-      <label for="password">Password</label>
-      <input type="password" name="password" required />
-    </div>
-    <div *ngIf="errorMessage">{{ errorMessage }}</div>
-    <button type="submit">Login</button>
-  </form>
+<div class="custom-card">
+  <div class="card">
+    <h2>Login</h2>
+    <div class="card-body">
+        <form (ngSubmit)="login()" >
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" placeholder="email@example.es" required />
+          </div>
+          <div class="mb-1">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" placeholder="Password" required />
+          </div>
+          <div *ngIf="errorMessage">{{ errorMessage }}</div>
+          <div class="accions">
+            <button type="submit" class="login-button">Login</button>
+          </div>
+        </form>
+    </div>    
+  </div>
 </div>
 
 

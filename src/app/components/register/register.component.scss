@@ -1,0 +1,28 @@
+.card {
+    background-color: var(--background-2);
+    padding: 5%;
+}
+
+.ng-invalid.ng-touched:not(form) {
+    border: 1px solid var(--bad-color);
+}
+
+.ng-valid.ng-touched:not(form) {
+    border: 1px solid var(--active-color);
+}
+
+.create-button {
+    padding: 2% 5%;
+    border-radius: 15px;
+    color: var(--font-color);
+    border-color: 1px solid var(--active-color);
+    background-color: var(--active-color);
+}
+
+.create-button:hover {
+  box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.2);
+  background-color: var(--background-2);
+  color: var(--font-hover);
+  border: 1px solid var(--font-hover);
+  transform: translateY(-2px);
+}

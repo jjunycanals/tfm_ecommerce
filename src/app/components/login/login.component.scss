@@ -1,0 +1,39 @@
+.custom-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4%;
+    min-height: 60vh;
+}
+
+.card {
+    width: 50%;
+    height: auto;
+    padding: 5% 5% 2% 5%;
+    align-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background-color: var(--background-2);
+}
+
+.accions {
+    text-align: end;
+    margin: 5%;
+    padding: 1%;
+}
+
+.login-button {
+    padding: 2% 5%;
+    border-radius: 15px;
+    color: var(--font-color);
+    border-color: 1px solid var(--active-color);
+    background-color: var(--active-color);
+}
+
+.login-button:hover {
+  box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.2);
+  background-color: var(--background-2);
+  color: var(--font-hover);
+  border: 1px solid var(--font-hover);
+  transform: translateY(-2px);
+}

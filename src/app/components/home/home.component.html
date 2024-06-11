@@ -1,8 +1,8 @@
 <div class="home-container">
     <h1 class="title">Cosint <br> somnis a mida</h1>
-    <button class="btn goproducts" (click)="goProducts()">
+    <a class="btn goproducts" routerLink="/products">
         <i class="fa-solid fa-paper-plane"></i>    Productes
-    </button>
+    </a>
 
     <div class="product-grid">
       <div class="content">
@@ -15,7 +15,7 @@
           <div class="prod-body-min">
             <h2 class="product-name">{{ product.name }}</h2>
             <p class="product-price">{{ product.price }} €</p>
-            <button (click)="viewProductDetail(product.id)" class="btn btn-primary detall">Veure Detalls</button>
+            <a routerLink="/products/{{product.id}}" class="btn btn-primary detall">Veure Detalls</a>
           </div>
 
         </div>

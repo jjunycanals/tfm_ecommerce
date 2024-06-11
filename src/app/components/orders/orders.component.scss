@@ -1,0 +1,54 @@
+.action {
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 5% 20%;
+    margin: 2%;
+    overflow: hidden;
+    font-family: inherit;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    appearance: none;
+    user-select: none;
+    background-color: var(--active-color);
+    border: 1px solid transparent;
+    border-radius: 25px;
+    transition: all 0.1s ease-in-out 0s;
+}
+
+.second-action {
+  box-sizing: border-box;
+    display: inline-block;
+    padding: 5% 12%;
+    margin: 2%;
+    overflow: hidden;
+    font-family: inherit;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    appearance: none;
+    user-select: none;
+    background-color: var(--third-color);
+    border: 1px solid transparent;
+    border-radius: 25px;
+    transition: all 0.1s ease-in-out 0s;
+}
+
+.crud {
+  width: 100%;
+}
+
+/* Afegim animació als botons */
+.action:hover {
+  box-shadow: 1px 2px 6px 1px rgba(0,0,0,0.8);
+  background-color: var(--background-2);
+  color: var(--font-hover);
+  border: 1px solid var(--font-hover);
+  transform: translateY(-2px);
+}
