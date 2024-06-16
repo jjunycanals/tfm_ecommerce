@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import {} from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterOutlet } from '@angular/router';
@@ -22,7 +22,11 @@ import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component'
     RegisterComponent,
     OrdersComponent,
     ShoppingCartComponent,
-    HttpClientModule
+    
+// TODO: `HttpClientModule` should not be imported into a component directly.
+// Please refactor the code to add `provideHttpClient()` call to the provider list in the
+// application bootstrap logic and remove the `HttpClientModule` import from this component.
+HttpClientModule
   ],
   providers: [ApiService],
   templateUrl: './nav.component.html',
