@@ -3,14 +3,14 @@
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="row g-3 needs-validation" novalidate>
         <div class="col-md-4">
             <label for="validationCustom01" class="form-label">Nom</label>
-            <input type="text" class="form-control" id="validationCustom01" formControlName="firstName" required>
+            <input type="text" class="form-control" id="validationCustom01" formControlName="firstName" value="jordi" required>
             <div *ngIf="submitted && registerForm.controls['firstName'].errors" class="invalid-feedback">
                 El Nom que has especificat no és vàlid.
             </div>
         </div>
         <div class="col-md-4">
             <label for="validationCustom02" class="form-label">Cognom</label>
-            <input type="text" class="form-control" id="validationCustom02" formControlName="lastName" required>
+            <input type="text" class="form-control" id="validationCustom02" formControlName="lastName" value="juny" required>
             <div *ngIf="submitted && registerForm.controls['lastName'].errors" class="invalid-feedback">
                 El Cognom que has especificat no és vàlid.
             </div>
@@ -18,7 +18,7 @@
         <div class="col-md-4">
             <label for="validationCustomUsername" class="form-label">Username</label>
             <div class="input-group has-validation">
-            <input type="text" class="form-control" id="validationCustomUsername" formControlName="username" aria-describedby="inputGroupPrepend" required>
+            <input type="text" class="form-control" id="validationCustomUsername" formControlName="username" value="jjc" aria-describedby="inputGroupPrepend" required>
             <div *ngIf="submitted && registerForm.controls['username'].errors" class="invalid-feedback">
                 Username ocupat.
             </div>
@@ -26,7 +26,7 @@
         </div>
         <div class="col-md-6">
             <label for="validationCustom03" class="form-label">Ciutat</label>
-            <input type="text" class="form-control" id="validationCustom03" formControlName="city" required>
+            <input type="text" class="form-control" id="validationCustom03" formControlName="city" value="girona" required>
             <div *ngIf="submitted && registerForm.controls['city'].errors" class="invalid-feedback">
                 Ciutat incorrecte.
             </div>
@@ -40,6 +40,20 @@
             <div *ngIf="submitted && registerForm.controls['state'].errors" class="invalid-feedback">
                 Provincia incorrecte.
             </div>
+        </div>
+        <div class="col-md-12">
+          <label for="validationCustom05" class="form-label">Email</label>
+          <input type="email" class="form-control" id="validationCustom05" formControlName="email" value="jordi@gmail.com" required>
+          <div *ngIf="submitted && registerForm.controls['email'].errors" class="invalid-feedback">
+              Email incorrecte.
+          </div>
+        </div>
+        <div class="col-md-12">
+          <label for="validationCustom06" class="form-label">Password</label>
+          <input type="password" class="form-control" id="validationCustom06" name="password" formControlName="password" required />
+          <div *ngIf="submitted && registerForm.controls['password'].errors" class="invalid-feedback">
+              Contrassenya incorrecte.
+          </div>
         </div>
         <div class="col-12">
             <div class="form-check">
@@ -56,5 +70,4 @@
             <button class="btn btn-primary create-button" type="submit">Crear</button>
         </div>
     </form>
-</div>  
-      
+</div>

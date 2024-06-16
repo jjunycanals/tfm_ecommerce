@@ -3,14 +3,28 @@
       <a class="navbar-brand" href="index">Somnis a Mida</a>
   </div>
   <div class="collapse navbar-collapse">
-    <ul class="navbar-nav justify-content-end">
+    <!-- usuari no logejat -->
+    <ul class="navbar-nav justify-content-end" *ngIf="!isLoggedIn()">
       <li class="nav-item"><a class="nav-link" href="/index">HOME</a></li>
-      <li class="nav-item"><a class="nav-link" href="/orders">Orders</a></li>
       <li class="nav-item"><a class="nav-link" href="/products">Products</a></li>
       <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
-      <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+      <li class="nav-item" ><a class="nav-link" href="/register">Register</a></li>
       <li class="nav-item">
-        <button class="btn carret">
+        <button class="btn carret" (click)="shoppingCart()">
+            <i class="fa-solid fa-cart-shopping"></i> Carret
+        </button>
+      </li>
+    </ul>
+    <!-- Usuari logejat -->
+    <ul class="navbar-nav justify-content-end" *ngIf="isLoggedIn()">
+      <li class="nav-item"><a class="nav-link" href="/index">HOME</a></li>
+      <li class="nav-item"><a class="nav-link" href="/products">Products</a></li>
+      <li class="nav-item"><a class="nav-link" href="/orders" >Orders</a></li>
+      <li class="nav-item" *ngIf="isLoggedIn()">
+          <a class="nav-link" (click)="logout()">Logout</a>
+        </li>
+      <li class="nav-item">
+        <button class="btn carret" (click)="shoppingCart()">
             <i class="fa-solid fa-cart-shopping"></i> Carret
         </button>
       </li>

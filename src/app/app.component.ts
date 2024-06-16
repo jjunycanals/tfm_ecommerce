@@ -11,6 +11,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { ProductsComponent } from './components/products/products.component';
 import { DetailproductsComponent } from './components/detailproducts/detailproducts.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,8 @@ import { CreateProductComponent } from './components/create-product/create-produ
     HttpClientModule,
     ProductsComponent,
     DetailproductsComponent,
-    CreateProductComponent
+    CreateProductComponent,
+    ShoppingCartComponent
   ],
   providers: [ApiService],
   templateUrl: './app.component.html',

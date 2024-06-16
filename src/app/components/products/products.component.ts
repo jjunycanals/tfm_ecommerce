@@ -8,6 +8,7 @@ import { LoginComponent } from '../login/login.component';
 import { NavComponent } from '../nav/nav.component';
 import { OrdersComponent } from '../orders/orders.component';
 import { RegisterComponent } from '../register/register.component';
+import { DetailproductsComponent } from '../detailproducts/detailproducts.component';
 
 @Component({
   selector: 'app-products',
@@ -21,6 +22,7 @@ import { RegisterComponent } from '../register/register.component';
     LoginComponent,
     RegisterComponent,
     OrdersComponent,
+    DetailproductsComponent,
     HttpClientModule,
     RouterModule
   ],
@@ -40,10 +42,16 @@ export class ProductsComponent implements OnInit{
   }
 
   viewProductDetail(productId: number): void {
+    console.log('aqui');
     this.router.navigate([`/products`, productId]);
   }
 
   editProduct(productId: number): void {
     this.router.navigate(['/create-product', productId]);
+  }
+
+  isLoggedIn(): boolean {
+    // Revisem si hi ha un token de sessió login
+    return this.apiService.isLoggedIn();
   }
 }

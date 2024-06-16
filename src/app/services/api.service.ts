@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, from } from 'rxjs';
 import { environment } from '../../environments/environment';
+import axios, { AxiosResponse } from 'axios';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,39 @@ export class ApiService {
   private apiAuthUrl = environment.apiUrl + '/auth';
 
   constructor(private http: HttpClient) { }
+  isLoggedIn(): boolean {
+    // Revisem si hi ha un token de sessió login
+    if (typeof localStorage !== 'undefined') {
+      const token = localStorage.getItem('token');
+      // Realiza el resto de la lógica
+      return !!token; // Por ejemplo, retornar true si hay token
+    }
+    return false;
+  }
+
+  private getHeaders(): HttpHeaders {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest',
+      'X-XSRF-TOKEN': ''
+    });
+
+    // Obtener el token CSRF de la etiqueta meta
+    // const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+    const csrfToken = this.getCSRFToken();
+    if (csrfToken) {
+      // headersConfig['X-XSRF-TOKEN'] = csrfToken;
+      headers = headers.set('X-XSRF-TOKEN', csrfToken);
+    }
+    console.log(headers);
+    return headers;
+  }
+
+  private getCSRFToken(): string | null {
+    const metaTag: HTMLMetaElement | null = document.querySelector('meta[name="csrf-token"]');
+    return metaTag ? metaTag.content : null;
+  }
 
   // ORDERS
   getOrders(): Observable<any> {
@@ -26,7 +60,7 @@ export class ApiService {
   }
 
   updateOrder(id: number, order: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/orders/${id}`, order);
+    return this.http.put(`${this.apiUrl}/orders/${id}`, order, { headers: this.getHeaders() });
   }
   patchOrder(id: number, partialOrder: any): Observable<any> {
     return this.http.patch(`${this.apiUrl}/orders/${id}`, partialOrder);
@@ -50,7 +84,10 @@ export class ApiService {
   }
 
   updateProduct(id: number, product: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/products/${id}`, product);
+    console.log(product);
+    console.log(`${this.apiUrl}/products/${id}`);
+
+    return this.http.put(`${this.apiUrl}/products/${id}`, product, { headers: this.getHeaders() });
   }
   patchProduct(id: number, partialProduct: any): Observable<any> {
     return this.http.patch(`${this.apiUrl}/products/${id}`, partialProduct);
@@ -62,19 +99,32 @@ export class ApiService {
 
   // Login i Register
   login(email: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.apiAuthUrl}/login`, { email, password });
+    return this.http.post<any>(`${this.apiUrl}/login`, { email, password }, { headers: this.getHeaders() });
   }
+  // login(email: string, password: string): Observable<any> {
+  //   return from(axios.post(`${this.apiUrl}/login`, { email, password }, { headers: this.getHeaders() }));
+  // }
 
   logout(): Observable<any> {
-    return this.http.post<any>(`${this.apiAuthUrl}/logout`, {});
+    return this.http.post<any>(`${this.apiUrl}/logout`, {});
   }
 
-  register(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiAuthUrl}/register`, { email, password });
+  // register(name:string, email: string, password: string): Observable<any> {
+  //   return this.http.post(`${this.apiUrl}/register`, { name, email, password });
+  // }
+  register(data: any) {
+    // Obtener el token CSRF de la etiqueta meta
+    const headers = this.getHeaders();
+    // Enviar la solicitud POST con las cabeceras configuradas
+    return this.http.post<any>(`${this.apiUrl}/register`, data, { headers });
   }
 
   getUser(): Observable<any> {
-    return this.http.get(`${this.apiAuthUrl}/user`);
+    return this.http.get(`${this.apiUrl}/user`);
+  }
+
+  getUserbyId(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/user/${id}`);
   }
 
 }

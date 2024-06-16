@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
@@ -130,7 +131,9 @@ class ProductController extends Controller
     public function update(Request $request, string $id)
     {
         $product = Products::find($id);
-
+        Log::info($product);
+        Log::info($product);
+        Log::info($product);
         if (!$product) {
             $data = [
                 'message' => 'Product not found en Update find Product',
@@ -159,7 +162,21 @@ class ProductController extends Controller
             return response()->json($data, 400);
         }
 
-        $product->update($request->all());
+        // $product->update($request->all());
+        // $product->fill($request->only([
+        //     'name', 'description', 'features', 'size', 'price', 'images', 'product_size', 'short_message'
+        // ]));
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->features = $request->features;
+        $product->size = $request->size;
+        $product->price = $request->price;
+        $product->images = $request->images;
+        $product->product_size = $request->product_size;
+        $product->short_message = $request->short_message;
+
+        $product->save();
+
 
         $data = [
             'message' => 'Update fet amb Update Product',

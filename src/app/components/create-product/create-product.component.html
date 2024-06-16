@@ -4,22 +4,22 @@
         <h1>Crea un nou producte</h1>
     </div>
     <div class="card-body">
-      <form (ngSubmit)="onSubmit()">
+      <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="name">Nom:</label>
-          <input type="text" class="form-control" id="name" name="name" [(ngModel)]="product.name" required>
+          <input type="text" class="form-control" id="name" formControlName="name" required>
         </div>
         <div class="form-group">
           <label for="description">Descripció:</label>
-          <textarea class="form-control" id="description" name="description" [(ngModel)]="product.description" required></textarea>
+          <textarea class="form-control" id="description" formControlName="description" required></textarea>
         </div>
         <div class="form-group">
           <label for="features">Característiques:</label>
-          <textarea class="form-control" id="features" name="features" [(ngModel)]="product.features" required></textarea>
+          <textarea class="form-control" id="features" formControlName="features" required></textarea>
         </div>
         <div class="form-group">
           <label for="size">Mida:</label>
-          <select class="form-select" id="size" name="size" [(ngModel)]="product.size" required>
+          <select class="form-select" id="size" formControlName="size" required>
             <option selected>Obre... </option>
             <option value="XL">XL</option>
             <option value="L">L</option>
@@ -31,22 +31,22 @@
         </div>
         <div class="form-group">
           <label for="price">Preu:</label>
-          <input type="number" class="form-control" id="price" name="price" [(ngModel)]="product.price" required>
+          <input type="number" class="form-control" id="price" formControlName="price" required>
         </div>
         <div class="form-group">
           <label for="images">Imatges:</label>
-          <input type="text" class="form-control" id="images" name="images" [(ngModel)]="product.images" required>
+          <input type="text" class="form-control" id="images" formControlName="images" required>
         </div>
         <div class="form-group">
           <label for="product_size">Mida del producte:</label>
-          <input type="text" class="form-control" id="product_size" name="product_size" [(ngModel)]="product.product_size" required>
+          <input type="text" class="form-control" id="product_size" formControlName="product_size" required>
         </div>
         <div class="form-group">
           <label for="short_message">Missatge curt:</label>
-          <input type="text" class="form-control" id="short_message" name="short_message" [(ngModel)]="product.short_message" required>
+          <input type="text" class="form-control" id="short_message" formControlName="short_message" required>
         </div>
         <div class="accions">
-          <button type="submit" class="btn btn-primary" id="guardarproducte">Guardar <i class="fa-solid fa-arrow-right"></i></button>
+          <button type="submit" class="btn btn-primary">Guardar <i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </form>
     </div>

@@ -5,18 +5,19 @@
         <form (ngSubmit)="login()" >
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" name="email" class="form-control" placeholder="email@example.es" required />
+            <input type="email" id="email" name="email" class="form-control" placeholder="email@example.es" required />
           </div>
           <div class="mb-1">
             <label for="password" class="form-label">Password</label>
-            <input type="password" name="password" class="form-control" placeholder="Password" required />
+            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required />
           </div>
           <div *ngIf="errorMessage">{{ errorMessage }}</div>
           <div class="accions">
+            <p class="links"><u><a (click)=goRegister()>Registra't</a></u></p>
             <button type="submit" class="login-button">Login</button>
           </div>
         </form>
-    </div>    
+    </div>
   </div>
 </div>
 

@@ -37,10 +37,105 @@
       <td>{{ order.delivery_date | date: 'yyyy-MM-dd' }}</td>
       <td>{{ order.created_at | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
       <td class="crud">
-        <button type="submit" class="action"> <i class="fa-solid fa-pen-to-square"></i> Editar</button>
-        <button type="submit" class="second-action"><i class="fa-solid fa-trash"></i> Eliminar</button>
+        <button type="button" class="action" (click)="openEditModal(order)"> <i class="fa-solid fa-pen-to-square"></i> Editar</button>
+        <button type="button" class="second-action" (click)="deleteOrder(order)"><i class="fa-solid fa-trash"></i> Eliminar</button>
       </td>
     </tr>
   </tbody>
 </table>
+
+<!-- Modal per editar la ORDER -->
+<div *ngIf="isEditModalOpen" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeEditModal()">&times;</span>
+    <h1>Editar</h1>
+    <form (ngSubmit)="updateOrder()" class="form-modal">
+      <div class="form-row">
+         <!-- Primera columna -->
+         <div class="form-column">
+          <div class="mb-3 modals">
+            <label for="order_number" class="form-label">Nº</label>
+            <input type="text" id="order_number" [(ngModel)]="selectedOrder.order_number" name="order_number" class="form-control" readonly>
+          </div>
+          <div class="mb-3 modals">
+            <label for="name" class="form-label">Nom</label>
+            <input type="text" id="name" [(ngModel)]="selectedOrder.name" name="name" class="form-control">
+          </div>
+          <div class="mb-3 modals">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" [(ngModel)]="selectedOrder.email" name="email" class="form-control">
+          </div>
+          <div class="mb-3 modals">
+            <label for="address" class="form-label">Direcció</label>
+            <input type="text" id="address" [(ngModel)]="selectedOrder.address" name="address" class="form-control">
+          </div>
+          <div class="mb-3 modals">
+            <label for="payment_method" class="form-label">Método de Pago</label>
+            <input type="text" id="payment_method" [(ngModel)]="selectedOrder.payment_method" name="payment_method" class="form-control">
+          </div>
+          <div class="mb-3 modals">
+            <label for="iban" class="form-label">IBAN</label>
+            <input type="text" id="iban" [(ngModel)]="selectedOrder.iban" name="iban" class="form-control">
+          </div>
+          <div class="mb-3 modals">
+            <label for="delivery_date" class="form-label">Data d'Entrega</label>
+            <input type="date" id="delivery_date" [(ngModel)]="selectedOrder.delivery_date" name="delivery_date" class="form-control">
+          </div>
+        </div>
+
+        <!-- Segona columna -->
+        <div class="form-column">
+          <div class="mb-3 modals">
+            <label for="status">Estado</label>
+            <select id="status" [(ngModel)]="selectedOrder.status" name="status" class="form-control">
+              <option value="new">New</option>
+              <option value="producing">Producing</option>
+              <option value="packaging">Packaging</option>
+              <option value="shipping">Shipping</option>
+              <option value="shipped">Shipped</option>
+              <option value="delivered">Delivered</option>
+            </select>
+          </div>
+          <div class="mb-3 modals">
+            <label for="product_quantity" class="form-label">Quantitat de Productes</label>
+            <input type="number" id="product_quantity" [(ngModel)]="selectedOrder.product_quantity" name="product_quantity" class="form-control">
+          </div>
+          <div class="mb-3 modals">
+            <label for="price" class="form-label">Preu</label>
+            <input type="number" id="price" [(ngModel)]="selectedOrder.price" name="price" class="form-control">
+          </div>
+          <div class="mb-3 modals">
+            <label for="total_price" class="form-label">Preu Total</label>
+            <input type="number" id="total_price" [(ngModel)]="selectedOrder.total_price" name="total_price" class="form-control">
+          </div>
+          <div class="mb-3 modals">
+            <label for="shipping_cost" class="form-label">Cost d'Enviament</label>
+            <input type="number" id="shipping_cost" [(ngModel)]="selectedOrder.shipping_cost" name="shipping_cost" class="form-control">
+          </div>
+          <div class="mb-3 modals">
+            <label for="subtotal" class="form-label">Subtotal</label>
+            <input type="number" id="subtotal" [(ngModel)]="selectedOrder.subtotal" name="subtotal" class="form-control">
+          </div>
+          <div class="mb-3 modals">
+            <label for="tax" class="form-label">IVA</label>
+            <input type="number" id="tax" [(ngModel)]="selectedOrder.tax" name="tax" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary cancel" (click)="closeEditModal()">Cancelar</button>
+        <button type="submit" class="btn btn-primary save">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- Modal d'eliminació -->
+<div *ngIf="showSuccessModal" class="success-modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeSuccessModal()">&times;</span>
+    <p>Order eliminada correctament.</p>
+  </div>
+</div>
 

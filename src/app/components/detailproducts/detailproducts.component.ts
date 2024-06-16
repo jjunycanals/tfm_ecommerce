@@ -30,16 +30,49 @@ import { Product } from '../../model/product.dto';
 })
 export class DetailproductsComponent implements OnInit {
   product: Product | undefined;
+  showModal: boolean = false;
 
   constructor(private route: ActivatedRoute, private apiService: ApiService) {}
 
   ngOnInit(): void {
     const productId = Number(this.route.snapshot.paramMap.get('id'));
+    console.log(productId);
     if (productId) {
-      this.apiService.getProduct(productId).subscribe((data: any) => {
-        this.product = data.message;
-      });
+      this.getProductsbyId(productId);
     }
   }
 
+  getProductsbyId(productId:number):void {
+    this.apiService.getProduct(productId).subscribe((data: any) => {
+      this.product = data.message;
+    });
+  }
+
+  addToCart(): void {
+    if (this.product) {
+      const cart = localStorage.getItem('cart');
+      const cartItems = cart ? JSON.parse(cart) : [];
+      const existingItem = cartItems.find((item: any) => item.id === this.product!.id);
+
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cartItems.push({
+          id: this.product.id,
+          name: this.product.name,
+          price: this.product.price,
+          size: this.product.size,
+          quantity: 1,
+          image: `../../../assets/img/${this.product.images}`
+        });
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cartItems));
+      this.showModal = true;
+    }
+  }
+
+  closeModal(): void {
+    this.showModal = false; // Amaga el modal
+  }
 }

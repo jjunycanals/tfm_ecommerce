@@ -8,5 +8,8 @@ Route::get('/', function () {
 
 Route::resource('orders', 'OrderController');
 Route::resource('products', 'ProductController');
+Route::resource('user', 'UserController');
+Route::resource('login', 'UserController');
+
 
 require __DIR__.'/auth.php';

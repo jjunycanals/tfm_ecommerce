@@ -1,6 +1,8 @@
 <div class="products-page">
-  <h1>Product List</h1>
-  <a routerLink="/create-product" class="btn btn-primary">Crear Producte</a>
+  <div class="header">
+    <h1>Product List</h1>
+    <a *ngIf="isLoggedIn()" routerLink="/create-product" class="btn btn-primary">Crear Producte</a>
+  </div>
   <div class="products-list">
     <div class="content">
       <article class="prod" *ngFor="let product of products.message">
@@ -13,8 +15,8 @@
           <h5>{{ product.name }}</h5>
           <p>{{ product.description }}</p>
           <p class="preu">{{ product.price }} €</p>
-          <a (click)="viewProductDetail(product.id)" class="btn btn-secondary accio2">Veure Detall</a>
-          <a (click)="editProduct(product.id)" class="btn btn-primary accio">Editar</a>
+          <a routerLink="/products/{{product.id}}" class="btn btn-secondary accio2">Veure Detall</a>
+          <a *ngIf="isLoggedIn()" (click)="editProduct(product.id)" class="btn btn-primary accio">Editar</a>
         </div>
       </article>
     </div>

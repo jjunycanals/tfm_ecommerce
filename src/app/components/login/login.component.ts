@@ -19,17 +19,25 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  email!: string;
-  password!: string;
-  errorMessage!: string;
+  email: string = '';
+  password: string = '';
+  errorMessage: string = '';
 
   constructor(public authService: ApiService, private router: Router) {}
 
   login() {
     this.authService.login(this.email, this.password).subscribe(
-      () => this.router.navigate(['/']), // Redirigeix a la pàgina principal en cas d'èxit
-      error => this.errorMessage = error.message // Mostra l'error en cas de fallo
+      response => {
+        localStorage.setItem('token', response.token);
+        this.router.navigate(['/']); // Redirigeix a la pàgina principal en cas d'èxit
+      }, error => {
+        this.errorMessage = error.message // Mostra l'error en cas de fallo
+      }
     );
+  }
+
+  goRegister(): void {
+    this.router.navigate(['/register']);
   }
 }
 

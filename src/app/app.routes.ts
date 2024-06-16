@@ -8,6 +8,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { DetailproductsComponent } from './components/detailproducts/detailproducts.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { HomeComponent } from './components/home/home.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 export const routes: Routes = [
   {
     path: '',
@@ -48,7 +49,11 @@ export const routes: Routes = [
   {
     path: 'create-product',
     component: CreateProductComponent,
-  }
+  },
+  {
+    path: 'cart',
+    component: ShoppingCartComponent
+  },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

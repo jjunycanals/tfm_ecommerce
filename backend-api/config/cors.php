@@ -15,13 +15,17 @@ return [
     |
     */
 
-    'paths' => ['*'],
+    'paths' => ['api/*', 'auth/*', 'sanctum/csrf-cookie', '/login', '*'],
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [env('FRONTEND_URL', 'http://localhost:4200/')],
+    'allowed_origins' => [
+        env('FRONTEND_URL', 'http://localhost:4200'),
+        'http://127.0.0.1:8000',
+        env('APP_URL', 'http://localhost:8080'),
+        ...array_map('trim', explode(',', env('SANCTUM_STATEFUL_DOMAINS', '')))
 
-    'allowed_origins_patterns' => [],
+    ],
 
     'allowed_headers' => ['*'],
 

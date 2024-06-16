@@ -1,0 +1,332 @@
+.title {
+  padding-bottom: 1%;
+  margin-bottom: 3%;
+  border-bottom: 1px solid var(--greenBorder);
+}
+
+.tarjeta {
+  min-width: 270px;
+  border-radius: 20px;
+  background-color: var(--background-2);
+}
+
+.numItems {
+  margin-left: 2%;
+  font-size: 16px;
+  color: gray;
+}
+
+.imatge {
+  border-radius: 20px 0 0 20px;
+}
+
+.contingut-card {
+  padding: 5% 1%;
+}
+
+.card-price {
+  color: var(--active-color);
+  font-size: 20px;
+}
+
+.card-text{
+  font-size: 18px;
+}
+
+.eliminar {
+  padding-right: 3%;
+  color: var(--bad-color);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: end;
+  border: none;
+  background-color: var(--background-2);
+}
+
+.eliminar:hover,
+.eliminar:focus {
+  color: var(--third-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.list-group {
+  margin-top: 1%;
+  min-width: 270px;
+  border-radius: 20px;
+  border: 1px solid var(--greenBorder);
+  box-shadow: 1px 2px 6px 1px rgba(0,0,0,0.5);
+  --bs-list-group-bg: var(--background-2);
+}
+
+.list-group-item {
+  display: grid;
+  padding: 5% 10%;
+  font-size: 16px;
+  border: none;
+}
+
+.final {
+  text-align: end;
+  font-size: 20px;
+}
+
+.list-group-item.pay {
+  padding: 2%;
+  margin: 0;
+}
+
+.btn-success.accio {
+  flex-grow: 1;
+  text-align: left;
+  background-color: var(--active-color);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  margin-bottom: 3%;
+}
+
+.fa-arrow-right {
+  margin-left: auto;
+  padding-right: 1rem;
+}
+
+/* Afegim animació al pay */
+.accio:hover,
+.btn-primary.accio:hover {
+  background: var(--third-color);
+  box-shadow: 1px 2px 6px 1px rgba(0,0,0,0.2);
+  transform: translateY(-2px);
+}
+
+// MODAL
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1050;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal.show {
+  display: block;
+}
+
+.modal-dialog {
+  position: relative;
+  margin: 1.75rem auto;
+  pointer-events: none;
+  max-width: 500px;
+}
+
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: var(--background-2);
+  background-clip: padding-box;
+  border: none;
+  border-radius: 0.3rem;
+  box-shadow: 0 3px 9px var(--background);
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid var(--greenBorder);
+  border-top-left-radius: calc(0.3rem - 1px);
+  border-top-right-radius: calc(0.3rem - 1px);
+}
+
+.close {
+  padding-right: 3%;
+  color: var(--primary-color);
+  float: right;
+  font-size: 26px;
+  font-weight: bold;
+  text-align: end;
+  border: none;
+  background-color: var(--background-2);
+}
+
+.close:hover,
+.close:focus {
+  color: var(--third-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  text-align: center;
+  padding: 1rem;
+}
+
+.payList {
+  list-style-type: none;
+  text-align: center;
+}
+
+// PErsonalització per metodes de pagament
+.payment-method {
+  display: flex;
+  margin: 5%;
+  justify-content: space-around; //Distribució equivalent
+}
+
+.payment-option {
+  display: block;
+  position: relative;
+  padding: 10px 20px; // padding per separació
+  cursor: pointer;
+  font-size: 18px;
+  border: 1px solid #ccc; // Border per simular el botó
+  border-radius: 5px;
+  transition: background-color 0.3s ease; // Transició
+}
+
+// Canvi amb el hover
+.payment-option:hover {
+  background-color: #f0f0f0;
+}
+
+// Ocultar radio original
+.payment-option input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+// Estil de l'indicador de la selecció (checkmark)
+.checkmark {
+  position: absolute;
+  top: 50%;
+  right: 100px;
+  transform: translate(-50%, -50%);
+  height: 25px;
+  width: 25px;
+  background-color: transparent;
+  border: 1px solid var(--greenBorder);
+  border-radius: 50%;
+}
+
+// Canvi de fondo del checkmark
+.payment-option:hover .checkmark {
+  background-color: #ccc;
+}
+
+// Quant el radio esta marcat, canviar el color del checkmark
+.payment-option input:checked ~ .checkmark {
+  background-color: var(--active-color);
+  border-color: var(--greenBorder);
+}
+
+// Estil del checkmark dins de l'input radio
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+// Mostra el checkmark quan el radio esta marcat
+.payment-option input:checked ~ .checkmark:after {
+  display: block;
+}
+
+// Estil del checkmark (punt blanc)
+.payment-option .checkmark:after {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: white;
+}
+
+// Estil entre text i la opció
+.payment-option span {
+  margin-left: 10px;
+  line-height: 25px;
+}
+
+.iban {
+  text-align: left;
+  font-size: 20px;
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 1rem;
+  border-top: 1px solid var(--greenBorder);
+  border-bottom-right-radius: calc(0.3rem - 1px);
+  border-bottom-left-radius: calc(0.3rem - 1px);
+}
+
+.btn-primary.accio {
+  text-align: left;
+  background-color: var(--active-color);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  margin-bottom: 3%;
+}
+
+
+/* Fem alguns elements responsius  */
+@media (max-width: 1200px) {
+  .contingut-card {
+    padding: 2% 1%;
+  }
+}
+
+/* Fem alguns elements responsius */
+@media (max-width: 995px) {
+  .contingut-card {
+    padding: 0% 1%;
+  }
+
+  .eliminar {
+    border-radius: 20px;
+  }
+
+  .btn-success.accio {
+    font-size: 14px;
+  }
+}
+
+/* En pantalles petites de movil */
+@media (max-width: 768px) {
+  .contingut-card {
+    padding: 0% 1%;
+  }
+
+  .imatge {
+    border-radius: 20px 20px 0 0;
+  }
+
+  .btn-success.accio {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 450px) {
+  .list-group-item {
+    padding: 10%;
+  }
+
+  .btn-success.accio {
+    font-size: 18px;
+  }
+}

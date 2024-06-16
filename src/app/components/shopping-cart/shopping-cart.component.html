@@ -1,0 +1,83 @@
+<div class="container mt-5 mb-5">
+  <h1 class="title">Carret <span class="numItems">({{ cartItems.length }} items)</span></h1>
+  <div class="row">
+    <div class="col-md-8">
+
+      <div *ngFor="let item of cartItems; let i = index" class="card mb-3 tarjeta">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img [src]="item.image" class="img-fluid imatge" alt="{{item.name}}">
+          </div>
+          <div class="col-md-8 contingut-card">
+            <div class="card-body position-relative">
+              <button class="btn btn-danger position-absolute top-0 end-0 eliminar" (click)="removeFromCart(i)"><i class="fa-solid fa-trash"></i></button>
+              <h2 class="card-title">{{ item.name }}</h2>
+              <p class="card-price"> {{ item.price }} € / u</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <input type="number" [(ngModel)]="item.quantity" (change)="updateQuantity(item, i)" min="1" class="form-control w-25">
+                <p class="card-text">Preu total: <b> {{ item.price * item.quantity }} €</b></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <ul class="list-group">
+        <li class="list-group-item"><h3>Comanda</h3></li>
+        <li class="list-group-item">Subtotal: <b class="final"> {{ subtotal }} €</b></li>
+        <li class="list-group-item">Enviament: <b class="final">3,99 €</b></li>
+        <li class="list-group-item">IVA (21%): <b class="final">{{ tax }} €</b></li>
+        <li class="list-group-item">Total: <b class="final">{{ total }} €</b></li>
+        <li class="list-group-item pay">
+          <div class="d-flex justify-content-between align-items-center">
+            <button class="btn btn-success mt-3 accio" (click)="openPaymentModal()">Continuar amb el pagament <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Payment Modal -->
+<div class="modal" tabindex="-1" [ngClass]="{'show': isModalOpen}" *ngIf="isModalOpen">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Pagament</h3>
+        <button type="button" class="close" aria-label="Close" (click)="closePaymentModal()"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <ul class="payList">
+          <li class="final2"><h3>Comanda</h3></li>
+          <li class="final2">Subtotal: <b> {{ subtotal }} €</b></li>
+          <li class="final2">Enviament: <b>3,99 €</b></li>
+          <li class="final2">IVA (21%): <b>{{ tax }} €</b></li>
+          <li class="final2">Total: <b>{{ total }} €</b></li>
+        </ul>
+        <h4>Pagament</h4>
+        <div class="payment-method">
+          <label class="payment-option">
+            <input type="radio" name="paymentMethod" value="card" [(ngModel)]="paymentMethod">
+            <span class="checkmark"></span>
+            Tarjeta
+          </label>
+          <label class="payment-option">
+            <input type="radio" name="paymentMethod" value="paypal" [(ngModel)]="paymentMethod">
+            <span class="checkmark"></span>
+            PayPal
+          </label>
+        </div>
+        <div *ngIf="paymentMethod === 'card'" class="mt-3 iban">
+          <label for="iban">IBAN:</label>
+          <input type="text" id="iban" class="form-control" [(ngModel)]="iban">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary accio" (click)="confirmPayment()">Validar pagament</button>
+      </div>
+    </div>
+  </div>
+</div>

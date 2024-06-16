@@ -1,31 +1,37 @@
 .home-container {
-    text-align: center;
-    padding: 20px;
+  text-align: center;
+  padding: 20px;
 }
 
 .title {
-    font-size: 5.5rem;
-    margin-bottom: 20px;
+  font-size: 5.5rem;
+  margin-bottom: 2%;
 }
 
 .goproducts {
-    margin: 5%;
-    padding: 2% 5%;
-    font-size: 20px;
-    color: var(--font-color);
-    border-color: 1px solid var(--active-color);
-    background-color: var(--active-color);
+  margin: 2%;
+  padding: 2% 5%;
+  font-size: 20px;
+  color: var(--font-color);
+  border-color: 1px solid var(--active-color);
+  background-color: var(--active-color);
 }
 
 .goproducts i {
-    font-size: 20px;
+  font-size: 20px;
+}
+
+.title2 {
+  color: var(--active-color);
+  padding-left: 5%;
+  text-align: left;
+  margin-bottom: 2%;
 }
 
 .product-grid {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .content{
@@ -130,21 +136,32 @@
 
 /* Fem alguns elements responsius després de crear el grid */
 @media (max-width: 1500px) {
+  .title2 {
+    padding-left: 3%;
+  }
+
   .content {
     grid-template-columns: repeat(4, 1fr);
   }
+
   .product-card img {
     height: 250px;
   }
 }
 
 @media (max-width: 1400px) {
+  .title2 {
+    padding-left: 10%;
+  }
+
   .content {
     grid-template-columns: repeat(3, 1fr);
   }
+
   .product-card img {
     height: 250px;
   }
+
   .prod-body-min {
     margin-top: -15%;
   }
@@ -155,6 +172,11 @@
   .content {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .title {
+    font-size: 4.5rem;
+  }
+
   .product-card img {
     height: 80%;
   }
@@ -162,10 +184,25 @@
 
 /* En pantalles petites de movil fer 1 sola columna */
 @media (max-width: 600px) {
+  .home-container {
+    padding: 10px;
+  }
+
   .content {
     grid-template-columns: repeat(1, 1fr);
   }
+
   .product-card img {
     height: 80%;
+  }
+
+  .title {
+    font-size: 2.8rem;
+    margin-bottom: 5%;
+  }
+
+  .title2 {
+    margin: 5% 1%;
+    text-align: center;
   }
 }

@@ -1,16 +1,13 @@
 <?php
 
-use App\Http\Controllers\Auth\UserController;
+// use App\Http\Controllers\Auth\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ProductController;
-use App\Http\Controllers\Auth\RegisteredUserController;
-
-// Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\AuthenticatedSessionController;
 
 Route::middleware(['cors'])->group(function () {
     Route::get('/orders', [OrderController::class, 'index']);
@@ -33,6 +30,24 @@ Route::middleware(['cors'])->group(function () {
 
     // USER
     Route::get('/user', [UserController::class, 'index']);
-    Route::get('users/{id}', [UserController::class, 'show']);
-    Route::post('/register', [RegisteredUserController::class, 'store']);
+    Route::get('/user/{id}', [UserController::class, 'show']);
+    Route::post('/register', [UserController::class, 'store']);
+    Route::post('/login', [UserController::class, 'store']);
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
 });
+
+
+// Route::middleware('auth:sanctum')->get('/orders', 'OrderController@index');
+
+// Route::middleware(['auth:sanctum'])->group(function () {
+
+//     // ORDERS
+//     Route::post('/orders', [OrderController::class, 'store']);
+//     Route::put('/orders/{id}', [OrderController::class, 'update']);
+//     Route::delete('/orders/{id}', [OrderController::class, 'destroy']);
+
+//     // PRODUCTS
+//     Route::post('/products', [ProductController::class, 'store']);
+//     Route::put('/products/{id}', [ProductController::class, 'update']);
+//     Route::delete('/products/{id}', [ProductController::class, 'destroy']);
+// });
