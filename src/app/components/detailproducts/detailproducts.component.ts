@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
@@ -16,17 +16,13 @@ import { Product } from '../../model/product.dto';
   imports: [
     RouterOutlet,
     CommonModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     NavComponent,
     LoginComponent,
     RegisterComponent,
     OrdersComponent,
-    
-// TODO: `HttpClientModule` should not be imported into a component directly.
-// Please refactor the code to add `provideHttpClient()` call to the provider list in the
-// application bootstrap logic and remove the `HttpClientModule` import from this component.
-HttpClientModule
   ],
   providers: [ApiService],
   templateUrl: './detailproducts.component.html',
@@ -47,7 +43,9 @@ export class DetailproductsComponent implements OnInit {
   }
 
   getProductsbyId(productId:number):void {
+    console.log('entro getproducts');
     this.apiService.getProduct(productId).subscribe((data: any) => {
+      console.log('entro servei');
       this.product = data.message;
     });
   }

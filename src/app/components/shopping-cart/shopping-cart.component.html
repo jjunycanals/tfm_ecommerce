@@ -15,7 +15,7 @@
               <p class="card-price"> {{ item.price }} € / u</p>
               <div class="d-flex justify-content-between align-items-center">
                 <input type="number" [(ngModel)]="item.quantity" (change)="updateQuantity(item, i)" min="1" class="form-control w-25">
-                <p class="card-text">Preu total: <b> {{ item.price * item.quantity }} €</b></p>
+                <p class="card-text">Preu total: <b> {{ item.price * item.quantity | number:'1.2-2' }} €</b></p>
               </div>
             </div>
           </div>
@@ -25,10 +25,10 @@
     <div class="col-md-4">
       <ul class="list-group">
         <li class="list-group-item"><h3>Comanda</h3></li>
-        <li class="list-group-item">Subtotal: <b class="final"> {{ subtotal }} €</b></li>
+        <li class="list-group-item">Subtotal: <b class="final"> {{ subtotal | number:'1.2-2' }} €</b></li>
         <li class="list-group-item">Enviament: <b class="final">3,99 €</b></li>
-        <li class="list-group-item">IVA (21%): <b class="final">{{ tax }} €</b></li>
-        <li class="list-group-item">Total: <b class="final">{{ total }} €</b></li>
+        <li class="list-group-item">IVA (21%): <b class="final">{{ tax | number:'1.2-2' }} €</b></li>
+        <li class="list-group-item">Total: <b class="final">{{ total | number:'1.2-2' }} €</b></li>
         <li class="list-group-item pay">
           <div class="d-flex justify-content-between align-items-center">
             <button class="btn btn-success mt-3 accio" (click)="openPaymentModal()">Continuar amb el pagament <i class="fa-solid fa-arrow-right"></i></button>

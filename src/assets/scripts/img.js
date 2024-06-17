@@ -4,5 +4,5 @@ function change_image(image) {
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
-  // Altres funcionalitats que es puguin necessitar
+  // implementar aquí en un futur la funcionalitat pel product-detail i les imatges dels nostres productes.
 });

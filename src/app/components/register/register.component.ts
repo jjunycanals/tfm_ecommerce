@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {} from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
@@ -15,20 +15,15 @@ import { CreateProductComponent } from '../create-product/create-product.compone
   selector: 'app-register',
   standalone: true,
   imports: [
-    HttpClientModule,
     CommonModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     RouterOutlet,
     NavComponent,
     LoginComponent,
     RegisterComponent,
     OrdersComponent,
-    
-// TODO: `HttpClientModule` should not be imported into a component directly.
-// Please refactor the code to add `provideHttpClient()` call to the provider list in the
-// application bootstrap logic and remove the `HttpClientModule` import from this component.
-HttpClientModule,
     ProductsComponent,
     DetailproductsComponent,
     CreateProductComponent
@@ -40,7 +35,7 @@ HttpClientModule,
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   submitted = false;
-  states = ['State 1', 'State 2', 'State 3'];
+  states = ['Barcelona', 'Madrid', 'Girona'];
 
   constructor(private formBuilder: FormBuilder, private router: Router, private apiService: ApiService) { }
 
@@ -79,13 +74,12 @@ export class RegisterComponent implements OnInit {
     )
       .subscribe(
         response => {
-          // Manejar la respuesta del backend según lo necesites
-          console.log('Registro exitoso', response);
+          // Resposta del backend segons necesitats
+          console.log('Registre exit ', response);
           this.router.navigate(['/login']);
         },
         error => {
-          console.error('Error al registrar', error);
-          // Manejar errores, por ejemplo mostrar un mensaje de error al usuario
+          console.error('Error al registre', error);
         }
       );
   }

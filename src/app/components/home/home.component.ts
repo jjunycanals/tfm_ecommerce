@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { ApiService } from '../../services/api.service';
@@ -17,16 +17,12 @@ import { Product } from '../../model/product.dto';
     RouterOutlet,
     CommonModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     NavComponent,
     LoginComponent,
     RegisterComponent,
     OrdersComponent,
-    
-// TODO: `HttpClientModule` should not be imported into a component directly.
-// Please refactor the code to add `provideHttpClient()` call to the provider list in the
-// application bootstrap logic and remove the `HttpClientModule` import from this component.
-HttpClientModule,
     RouterModule
   ],
   providers: [ApiService],
