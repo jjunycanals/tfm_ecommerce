@@ -19,3 +19,21 @@ export class AuthInterceptor implements HttpInterceptor {
     }
   }
 }
+
+
+@Injectable()
+export class CsrfInterceptor implements HttpInterceptor {
+
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    // Assume the CSRF token is stored in localStorage or a service
+    const csrfToken = localStorage.getItem('csrfToken') || '';
+
+    // Clone the request and add the CSRF token header
+    const clonedRequest = req.clone({
+      headers: req.headers.set('X-CSRF-Token', csrfToken)
+    });
+
+    return next.handle(clonedRequest);
+  }
+}
+

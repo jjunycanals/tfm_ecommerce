@@ -36,8 +36,9 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   submitted = false;
   states = ['Barcelona', 'Madrid', 'Girona'];
+  csrfToken: string = '';
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private apiService: ApiService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private apiService: ApiService, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -50,7 +51,23 @@ export class RegisterComponent implements OnInit {
       password: ['', Validators.required],
       agree: [false, Validators.requiredTrue]
     });
+    // Obtenir el token CSRF des de Laravel
+    this.fetchCSRFToken();
   }
+
+  // Funció per obtenir el token CSRF des de Laravel
+  fetchCSRFToken(): void {
+    this.http.get<any>('http://127.0.0.1:8000/sanctum/csrf-cookie').subscribe(
+      response => {
+        // És aquí on el backend de Laravel prepara la cookie CSRF
+        this.csrfToken = response.csrf_token;
+      },
+      error => {
+        console.error('Error al obtenir el token CSRF', error);
+      }
+    );
+  }
+
   // Per accedir als controls del formulari
   get f() {
     console.log(this.registerForm.controls);

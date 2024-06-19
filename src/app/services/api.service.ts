@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
 import { environment } from '../../environments/environment';
 import axios, { AxiosResponse } from 'axios';
@@ -30,7 +30,7 @@ export class ApiService {
       'X-XSRF-TOKEN': ''
     });
 
-    // Obtener el token CSRF de la etiqueta meta
+    // Obtenir el token CSRF de l'etiqueta meta
     // const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
     const csrfToken = this.getCSRFToken();
     if (csrfToken) {
@@ -45,6 +45,7 @@ export class ApiService {
     const metaTag: HTMLMetaElement | null = document.querySelector('meta[name="csrf-token"]');
     return metaTag ? metaTag.content : null;
   }
+
 
   // ORDERS
   getOrders(): Observable<any> {
@@ -113,10 +114,8 @@ export class ApiService {
   //   return this.http.post(`${this.apiUrl}/register`, { name, email, password });
   // }
   register(data: any) {
-    // Obtener el token CSRF de la etiqueta meta
-    const headers = this.getHeaders();
     // Enviar la solicitud POST con las cabeceras configuradas
-    return this.http.post<any>(`${this.apiUrl}/register`, data, { headers });
+    return this.http.post<any>(`${this.apiUrl}/register`, data, { headers: this.getHeaders() });
   }
 
   getUser(): Observable<any> {

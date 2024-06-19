@@ -9,7 +9,7 @@ import { ApiService } from './services/api.service';
 import { AppRoutingModule, routes } from './app.routes';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { AuthInterceptor } from './services/auth.interceptor';
+import { AuthInterceptor, CsrfInterceptor } from './services/auth.interceptor';
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { DetailproductsComponent } from './components/detailproducts/detailproducts.component';
 import { LoginComponent } from './components/login/login.component';
@@ -51,7 +51,8 @@ import { HomeComponent } from './components/home/home.component';
   ],
   providers: [
     ApiService,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: CsrfInterceptor, multi: true },
   ],
   bootstrap: []
 })

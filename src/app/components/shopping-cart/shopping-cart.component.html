@@ -12,7 +12,7 @@
             <div class="card-body position-relative">
               <button class="btn btn-danger position-absolute top-0 end-0 eliminar" (click)="removeFromCart(i)"><i class="fa-solid fa-trash"></i></button>
               <h2 class="card-title">{{ item.name }}</h2>
-              <p class="card-price"> {{ item.price }} € / u</p>
+              <p class="card-price"> {{ item.price }} € / u <span class="talla">Talla: {{ item.size }}</span></p>
               <div class="d-flex justify-content-between align-items-center">
                 <input type="number" [(ngModel)]="item.quantity" (change)="updateQuantity(item, i)" min="1" class="form-control w-25">
                 <p class="card-text">Preu total: <b> {{ item.price * item.quantity | number:'1.2-2' }} €</b></p>
@@ -26,7 +26,7 @@
       <ul class="list-group">
         <li class="list-group-item"><h3>Comanda</h3></li>
         <li class="list-group-item">Subtotal: <b class="final"> {{ subtotal | number:'1.2-2' }} €</b></li>
-        <li class="list-group-item">Enviament: <b class="final">3,99 €</b></li>
+        <li class="list-group-item">Enviament: <b class="final">{{ delivery | number:'1.2-2' }} €</b></li>
         <li class="list-group-item">IVA (21%): <b class="final">{{ tax | number:'1.2-2' }} €</b></li>
         <li class="list-group-item">Total: <b class="final">{{ total | number:'1.2-2' }} €</b></li>
         <li class="list-group-item pay">
@@ -52,10 +52,10 @@
       <div class="modal-body">
         <ul class="payList">
           <li class="final2"><h3>Comanda</h3></li>
-          <li class="final2">Subtotal: <b> {{ subtotal }} €</b></li>
-          <li class="final2">Enviament: <b>3,99 €</b></li>
-          <li class="final2">IVA (21%): <b>{{ tax }} €</b></li>
-          <li class="final2">Total: <b>{{ total }} €</b></li>
+          <li class="final2">Subtotal: <b> {{ subtotal | number:'1.2-2' }} €</b></li>
+          <li class="final2">Enviament: <b>{{ delivery | number:'1.2-2' }} €</b></li>
+          <li class="final2">IVA (21%): <b>{{ tax | number:'1.2-2' }} €</b></li>
+          <li class="final2">Total: <b>{{ total | number:'1.2-2' }} €</b></li>
         </ul>
         <h4>Pagament</h4>
         <div class="payment-method">

@@ -59,7 +59,8 @@ label.radio input:checked + span {
   color: #fff;
 }
 
-.btn-danger {
+.btn-danger,
+.tornar {
   background-color: var(--active-color);
   border-color: var(--font-color);
 }
@@ -67,7 +68,8 @@ label.radio input:checked + span {
 .btn-danger:hover,
 label.radio input:checked + span:hover,
 label.radio span:hover,
-.action:hover {
+.action:hover,
+.tornar:hover {
   box-shadow: 1px 2px 6px 1px rgba(0,0,0,0.8);
   background-color: var(--background-2);
   color: var(--font-hover);
@@ -75,7 +77,8 @@ label.radio span:hover,
   transform: translateY(-2px);
 }
 
-.btn-danger:focus {
+.btn-danger:focus,
+.tornar:focus {
   box-shadow: none;
 }
 
